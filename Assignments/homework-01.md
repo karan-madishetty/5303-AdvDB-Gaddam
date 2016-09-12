@@ -1,13 +1,13 @@
-#Shravani Gaddam   
-67.205.143.163   
-http://67.205.143.163/phpmyadmin   
-gift_options.sql   
+###Shravani Gaddam   
+###67.205.143.163   
+####http://67.205.143.163/phpmyadmin   
+##gift_options.sql   
 CREATE TABLE IF NOT EXISTS `gift_options` (   
         `allowGiftWrap` boolean NOT NULL,   
         `allowGiftMessage` boolean NOT NULL,   
         `allowGiftReceipt` boolean NOT NULL   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;   
-image_entities.sql   
+##image_entities.sql   
 CREATE TABLE IF NOT EXISTS `image_entities` (   
         `thumbnailImage` tinyblob NOT NULL,   
         `mediumImage` mediumblob NOT NULL,   
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `image_entities` (
  ALTER TABLE `image_entities`   
    ADD PRIMARY KEY(   
      `entityType`);    
-market_place_price.sql   
+##market_place_price.sql   
 CREATE TABLE IF NOT EXISTS `market_place_price` (   
         `price` double NOT NULL,   
         `sellerInfo` varchar(44) NOT NULL,   
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `market_place_price` (
 ALTER TABLE `market_place_price`   
    ADD PRIMARY KEY(   
      `price`);   
-products.sql   
+##products.sql   
 CREATE TABLE IF NOT EXISTS `products` (   
        	`itemId` int(9) NOT NULL,   
        	`parentItemId` int(9) NOT NULL,   
