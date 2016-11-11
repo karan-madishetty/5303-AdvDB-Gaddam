@@ -1,7 +1,7 @@
 ###Shravani Gaddam   
 ###67.205.143.163   
 ####http://67.205.143.163/phpmyadmin   
-#### gift_options.sql
+### gift_options.sql
 
 ```sql
 CREATE TABLE IF NOT EXISTS gift_options(
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS gift_options(
 ) ENGINE = INNODB DEFAULT CHARSET = latin1;
 ```
 
-#### image_entities.sql
+### image_entities.sql
 
 ```sql
 CREATE TABLE IF NOT EXISTS image_entities (
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS image_entities (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ```
 
-#### market_place_price.sql
+### market_place_price.sql
 
 ```sql
 CREATE TABLE IF NOT EXISTS market_place_price(
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS market_place_price(
 ```	
 
 
-#### products.sql
+### products.sql
 
 ```sql
 
