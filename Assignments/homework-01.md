@@ -18,13 +18,13 @@ CREATE TABLE IF NOT EXISTS gift_options(
 
 ```sql
 CREATE TABLE IF NOT EXISTS image_entities (
-	itemId INT( 10 ) NOT NULL ,
-        thumbnailImage varchar(149) NOT NULL,
-        mediumImage varchar(149) NOT NULL,
-        largeImage varchar(149) NOT NULL,
+	itemId INT(10) NOT NULL ,
+        thumbnailImage tinyblob NOT NULL,
+        mediumImage mediumblob NOT NULL,
+        largeImage longblob NOT NULL,
         entityType varchar(9) NOT NULL,
-    	PRIMARY KEY ( itemId ) ,
-	FOREIGN KEY ( itemId ) REFERENCES products( itemId )
+    	PRIMARY KEY (itemId) ,
+	FOREIGN KEY (itemId) REFERENCES products(itemId)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ```
 
@@ -32,16 +32,16 @@ CREATE TABLE IF NOT EXISTS image_entities (
 
 ```sql
 CREATE TABLE IF NOT EXISTS market_place_price(
-	itemId INT( 10 ) NOT NULL ,
+	itemId INT(10) NOT NULL ,
 	price DOUBLE NOT NULL ,
-	sellerInfo VARCHAR( 50 ) NOT NULL ,
+	sellerInfo VARCHAR(44) NOT NULL ,
 	standardShipRate DOUBLE NOT NULL ,
 	twoThreeDayShippingRate DOUBLE NOT NULL ,
 	availableOnline BOOLEAN NOT NULL ,
 	clearance BOOLEAN NOT NULL ,
-	offerType VARCHAR( 20 ) NOT NULL ,
-	PRIMARY KEY ( itemId ) ,
-	FOREIGN KEY ( itemId ) REFERENCES products( itemId )
+	offerType VARCHAR(16) NOT NULL ,
+	PRIMARY KEY (itemId) ,
+	FOREIGN KEY (itemId) REFERENCES products(itemId)
 ) ENGINE = INNODB DEFAULT CHARSET = latin1;
 ```	
 
@@ -53,37 +53,37 @@ CREATE TABLE IF NOT EXISTS market_place_price(
 CREATE TABLE IF NOT EXISTS products (
 	itemId int(10) NOT NULL,
 	parentItemId int(10) NOT NULL,
-	name varchar(250) NOT NULL,
+	name varchar(200) NOT NULL,
 	salePrice float(6,2) NOT NULL,
 	upc bigint(12) NOT NULL,
 	categoryPath varchar(123) NOT NULL,
-	shortDescription text(1200) NOT NULL,
-	longDescription text(6000) NOT NULL,
+	shortDescription mediumtext NOT NULL,
+	longDescription longtext NOT NULL,
 	brandName varchar(36) NOT NULL,
-	thumbnailImage varchar(149) NOT NULL,
-	mediumImage varchar(149) NOT NULL,
-	largeImage varchar(149) NOT NULL,
-	productTrackingUrl varchar(450) NOT NULL,
-	modelNumber varchar(60) NOT NULL,
-	productUrl varchar(350) NOT NULL,
-	categoryNode varchar(25) NOT NULL,
+	thumbnailImage blob NOT NULL,
+	mediumImage mediumblob NOT NULL,
+	largeImage longbolb NOT NULL,
+	productTrackingUrl varchar(416) NOT NULL,
+	modelNumber varchar(53) NOT NULL,
+	productUrl varchar(345) NOT NULL,
+	categoryNode varchar(23) NOT NULL,
 	stock varchar(13) NOT NULL,
-	addToCartUrl varchar(240) NOT NULL,
-	affiliateAddToCartUrl varchar(300) NOT NULL,
-	offerType varchar(20) NOT NULL,
+	addToCartUrl varchar(221) NOT NULL,
+	affiliateAddToCartUrl varchar(296) NOT NULL,
+	offerType varchar(16) NOT NULL,
 	msrp double NOT NULL,
 	standardShipRate double NOT NULL,
-	color varchar(12) NOT NULL,
-	customerRating varchar(6) NOT NULL,
-	numRevieus int(6) NOT NULL,
-	customerRatingImage varchar(50) NOT NULL,
+	color varchar(10) NOT NULL,
+	customerRating varchar(5) NOT NULL,
+	numRevieus int(5) NOT NULL,
+	customerRatingImage blob NOT NULL,
 	maxItemsInOrder int(6) NOT NULL,
-	size varchar(50) NOT NULL,
-	sellerInfo varchar(50) NOT NULL,
-	age varchar(16) NOT NULL,
+	size varchar(49) NOT NULL,
+	sellerInfo varchar(44) NOT NULL,
+	age int(14) NOT NULL,
 	gender varchar(6) NOT NULL,
-	isbn bigint(16) NOT NULL,
-	preOrderShipsOn varchar(20) NOT NULL,
+	isbn bigint(13) NOT NULL,
+	preOrderShipsOn varchar(19) NOT NULL,
 	primary key(itemId,parentItemId)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ```
