@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS `gift_options` (
         `allowGiftReceipt` BOOLEAN NOT NULL,   
         `allowGiftMessage` BOOLEAN NOT NULL    
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;   
-image_entities.sql   
+
+##image_entities.sql   
    
 CREATE TABLE IF NOT EXISTS  `image_entities` (   
          `itemId` INT(9) NOT NULL,   
