@@ -2,7 +2,7 @@
 ###67.205.143.163   
 ####http://67.205.143.163/phpmyadmin   
 ##gift_options.sql   
-
+SELECT * FROM `market_place_price` WHERE 1
 CREATE TABLE IF NOT EXISTS `gift_options` (   
         `itemId` INT(9) NOT NULL PRIMARY KEY,   
         `allowGiftWrap` BOOLEAN NOT NULL,   
