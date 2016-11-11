@@ -3,12 +3,12 @@
 ####http://67.205.143.163/phpmyadmin   
 ##gift_options.sql   
 
-```CREATE TABLE IF NOT EXISTS `gift_options` (   
+CREATE TABLE IF NOT EXISTS `gift_options` (   
         `itemId` INT(9) NOT NULL PRIMARY KEY,   
         `allowGiftWrap` BOOLEAN NOT NULL,   
         `allowGiftReceipt` BOOLEAN NOT NULL,   
         `allowGiftMessage` BOOLEAN NOT NULL    
-) ENGINE=InnoDB DEFAULT CHARSET=latin1; ```  
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;   
 
 ##image_entities.sql   
    
