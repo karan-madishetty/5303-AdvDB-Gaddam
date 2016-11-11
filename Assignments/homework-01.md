@@ -22,6 +22,19 @@ CREATE TABLE IF NOT EXISTS  `image_entities` (
 ) ENGINE = INNODB DEFAULT CHARSET = latin1   
 
 ##market_place_price.sql   
+
+```sql
+CREATE TABLE IF NOT EXISTS `market_place_price` (
+		`itemId`  INT(9) NOT NULL PRIMARY KEY,
+       	`price` DOUBLE(6,2) NOT NULL,
+       	`sellerInfo` VARCHAR(44) NOT NULL,
+       	`standardShipRate` DOUBLE(5,2) NOT NULL,
+       	`twoThreeDayShippingRate` DOUBLE(6,2) NOT NULL,
+       	`availableOnline` BOOLEAN NOT NULL,
+       	`clearance` BOOLEAN NOT NULL,
+       	`offerType` VARCHAR(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+```
    
 CREATE TABLE IF NOT EXISTS `market_place_price` (   
         `itemId`  INT(9) NOT NULL PRIMARY KEY,   
