@@ -2,7 +2,6 @@
 ###67.205.143.163   
 ####http://67.205.143.163/phpmyadmin   
 ##gift_options.sql   
-gift_options.sql
 
 CREATE TABLE IF NOT EXISTS `gift_options` (   
         `itemId` INT(9) NOT NULL PRIMARY KEY,   
@@ -20,7 +19,8 @@ CREATE TABLE IF NOT EXISTS  `image_entities` (
          `entityType` VARCHAR(9) NOT NULL,   
         PRIMARY KEY ( itemId, entityType )   
 ) ENGINE = INNODB DEFAULT CHARSET = latin1   
-market_place_price.sql   
+
+##market_place_price.sql   
    
 CREATE TABLE IF NOT EXISTS `market_place_price` (   
         `itemId`  INT(9) NOT NULL PRIMARY KEY,   
@@ -32,7 +32,8 @@ CREATE TABLE IF NOT EXISTS `market_place_price` (
         `clearance` BOOLEAN NOT NULL,   
         `offerType` VARCHAR(16) NOT NULL   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;   
-products.sql   
+
+##products.sql   
    
 CREATE TABLE IF NOT EXISTS `products` (   
         `itemId` INT(9) NOT NULL PRIMARY KEY,   
