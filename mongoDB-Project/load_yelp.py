@@ -4,7 +4,7 @@ import json
 from pymongo import MongoClient
 from bson import Binary, Code
 
-DATABASENAME = 'yelpdb'
+DATABASENAME = 'shravani'
 TEST = False
 
 client = MongoClient('localhost', 27017)
@@ -36,9 +36,10 @@ for file in files:
     collection_name = 'yelp.'+name
     print(collection_name)
 
-    # Creates collection in mongo here:
+    # Creates collection in mongo here: 
     if not TEST:
         collection = db[collection_name]
+
     # Deletes documents from collection every time it's run
     if not TEST:
         result = collection.delete_many({})
