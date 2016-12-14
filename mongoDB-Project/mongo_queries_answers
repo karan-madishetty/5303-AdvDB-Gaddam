@@ -1,0 +1,101 @@
+MONGO QUERIES WITH ANSWERS 
+NOTE: ( Outputs are with limits because output is so long)
+ 
+SHRAVANI GADDAM (M20228201) 
+MADISHETTY KARAN (M20228991) 
+ 
+1.Find all restaurants with zip code X or Y -Using 89117 and 89122 answer = 1083 
+> db.yelp.business.find({$or: [{"full_address" : {$regex : "89117"}},{"full_address" : {$regex : "89122"}}]}).count() 
+1083 
+ 
+2.Find all restaurants in city X 
+> db.yelp.business.find({"full_address": {$regex: "Las Vegas"}}).count() 
+20382 
+ 
+3.Find the restaurants within 5 miles of lat , lon 
+> db.yelp.business.find({ "loc" : { $geoWithin : { $centerSphere: [ [ -80.839186, 35.226504 ], 5 / 3963.2 ] } } }).count() 
+2780 
+ 
+4.Find all the reviews for restaurant X 
+ 
+> db.yelp.review.find({"business_id" : "hB3kH0NgM5LkEWMnMMDnHw"}).count() 
+20 
+ 
+ 
+ 
+ 
+5.Find all the reviews for restaurant X that are 5 stars. 
+ 
+> db.yelp.review.find({ $and : [{"business_id" : "P1fJb2WQ1mXoiudj8UE44w"}, {"stars" : 5}]}).count() 
+25 
+ 
+6. Find all the users that have been 'yelping' for over 5 years. 
+ 
+> db.yelp.user.find({ "yelping_since" : {$lte:"2010-07"}}).limit(1).pretty() 
+{ 
+        "_id" : ObjectId("581f58c287e15952d0860011"), 
+        "yelping_since" : "2004-10", 
+        "votes" : { 
+                "funny" : 1, 
+                "useful" : 11, 
+                "cool" : 5 
+        }, 
+        "user_id" : "fHtTaujcyKvXglE33Z5yIw", 
+        "name" : "Ken", 
+        "elite" : [ ], 
+        "type" : "user", 
+        "compliments" : { 
+                "cute" : 2 
+        }, 
+        "fans" : 2, 
+        "average_stars" : 4.64, 
+        "review_count" : 11, 
+        "friends" : [ 
+                "18kPq7GPye-YQ3LyKyAZPw", 
+                "rpOyqD_893cqmDAtJLbdog", 
+                "i63u3SdbrLsP4FxiSKP0Zw", 
+                "uKgbjPhcrS2pi9hS39Az6A" 
+        ] 
+} 
+ 
+7. Find the business that has the tip with the most likes. 
+ 
+> db.yelp.tip.find().sort({"likes":-1}).limit(1).pretty() 
+{ 
+        "_id" : ObjectId("581f57ef87e15952d07eef3c"), 
+        "user_id" : "WmAyExqSWoiYZ5XEqpk_Uw", 
+        "text" : "License photographer assured me her photos always came out great. That is false! My head looks like something Super Mario stomps on. Greeeeeaaaaaat.", 
+        "business_id" : "iTLwGhF-NyHGrgoYzGK7xw", 
+        "likes" : 11, 
+        "date" : "2015-09-17", 
+        "type" : "tip" 
+} 
+ 
+8. Find the average review_count for users. 
+ 
+> db.yelp.user.aggregate([{$group:{_id:"review_count",averageReviewCount:{$avg:"$review_count"}}}]) 
+{ "_id" : "review_count", "averageReviewCount" : 25.757102115486575 } 
+ 
+ 
+ 
+ 
+ 
+ 
+9. Find all the users that are considered elite. 
+ 
+> db.yelp.user.find({"elite":{"$ne":[]}},{"_id":0,"user_id":1,"name":1,"elite":1}).limit(5) 
+{ "user_id" : "SIBCL7HBkrP4llolm4SC2A", "name" : "Katherine", "elite" : [ 2005 ] } 
+{ "user_id" : "ysYmC-ufbdmVEX9yAv-VEQ", "name" : "George", "elite" : [ 2005, 2006, 2007 ] } 
+{ "user_id" : "WPOKvkacSKHx_bIG1alFiA", "name" : "Mary", "elite" : [ 2005 ] } 
+{ "user_id" : "18kPq7GPye-YQ3LyKyAZPw", "name" : "Russel", "elite" : [ 2005, 2006 ] } 
+{ "user_id" : "rpOyqD_893cqmDAtJLbdog", "name" : "Jeremy", "elite" : [ 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016 ] } 
+ 
+10.Find the longest elite user. 
+ 
+> db.yelp.user.aggregate([{"$group": { "_id" :0 , "max": {"$max": {"lengthofelite" :{ "$size" : "$elite"}}}}}]) 
+{ "_id" : 0, "max" : { "lengthofelite" : 12 } } 
+ 
+11. Of elite users, whats the average number of years someone is elite. 
+ 
+> db.yelp.user.aggregate({$project: {elitelength:{$size:"$elite"}}},{$group:{_id:0, avg:{$avg:"$elitelength"}}}) 
+{ "_id" : 0, "avg" : 0.16248929439113488 } 
