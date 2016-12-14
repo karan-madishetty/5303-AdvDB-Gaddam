@@ -29,7 +29,7 @@ app = FlaskAPI(__name__)
 CORS(app)
 
 client = pymongo.MongoClient('localhost', 27017)
-db = client['yelpdb']
+db = client['shravani']
 businessdb = db['yelp.business']
 review = db['yelp.review']
 userdb = db['yelp.user']
